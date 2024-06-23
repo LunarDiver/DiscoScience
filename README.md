@@ -1,4 +1,5 @@
-# DiscoScience
+# DiscoScience - UPS Optimized
+## The following is an exact copy of the README.md of the original mod:
 Factorio mod to make labs more colourful. It works by overlaying custom lights and animations on each science lab, and synchronizing the colours with the ingredients the labs are consuming.
 
 Testing relies on:
