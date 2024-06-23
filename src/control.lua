@@ -5,10 +5,6 @@ local researchColor = require("core.researchColor")
 local labRenderers = require("core.labRenderers")
 local labColoring = require("core.labColoring")
 
--- constants
-
-local colorSwitchFrequency = 60
-
 -- Track whether state is linked, in order to be able to avoid remote callbacks
 -- before proper initialization (when a dependent mod is initialised later in a game)
 
@@ -140,17 +136,11 @@ script.on_event(
 )
 
 script.on_nth_tick(
-    colorSwitchFrequency,
-    function (event)
-        labColoring.chooseNewFunction()
-        labColoring.chooseNewDirection()
-    end
-)
-
-script.on_event(
-    {defines.events.on_tick},
+    tonumber(settings.startup["dsld-updaterate"].value),
     function (event)
         researchColor.validateIngredientColors()
         labColoring.updateRenderers(event, labRenderers, researchColor)
+        labColoring.chooseNewFunction()
+        labColoring.chooseNewDirection()
     end
 )
